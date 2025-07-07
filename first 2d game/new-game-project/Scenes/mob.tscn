@@ -58,7 +58,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_ganfo")
 animation = &"walk"
-frame_progress = 0.968183
+frame_progress = 0.949268
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
