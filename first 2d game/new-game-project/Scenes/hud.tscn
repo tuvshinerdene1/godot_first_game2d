@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c13vr4s1kymhx"]
+[gd_scene load_steps=5 format=3 uid="uid://c13vr4s1kymhx"]
 
 [ext_resource type="FontFile" uid="uid://chrtr4jxw44fk" path="res://dodge_the_creeps_2d_assets/fonts/Xolonium-Regular.ttf" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://c28g0ed355dad" path="res://Scenes/hud.gd" id="1_fccik"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_fccik"]
+
+[sub_resource type="Shortcut" id="Shortcut_bjfho"]
+events = [SubResource("InputEventJoypadButton_fccik")]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_fccik")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -38,10 +45,25 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="StartButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.5
+offset_top = -180.0
+offset_right = 88.5
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_e0onf")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_bjfho")
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
